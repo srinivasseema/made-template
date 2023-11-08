@@ -9,7 +9,7 @@ Correlation Between Energy and Weather to anticipate energy demand surges and di
 
 <!-- Think about one main question you want to answer based on the data. -->
 1. Identify weather patterns and climate factors that significantly impact energy consumption to anticipate energy demand surges and dips.
-Insights into the relationship between energy consumption, pricing, and climate patterns.
+2. Insights into the relationship between energy consumption, pricing, and climate patterns.
 
 ## Description
 
