@@ -52,5 +52,5 @@ Current, forecast and historical weather data is available via regulary updated 
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Explore Datasources
+1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
 2. Analyze data pipeline requirements
