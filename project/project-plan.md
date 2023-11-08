@@ -19,11 +19,11 @@ In a rapidly changing climate, accurate energy demand and pricing forecasts are 
 
 The model will analyze historical energy consumption data, weather patterns, and climate projections to identify key relationships driving energy demand and pricing dynamics. This will enable utilities to:
 
-Proactively prepare for demand fluctuations caused by extreme weather events.
+* Proactively prepare for demand fluctuations caused by extreme weather events.
 
-Optimize energy pricing strategies to ensure financial sustainability while maintaining affordability for consumers.
+* Optimize energy pricing strategies to ensure financial sustainability while maintaining affordability for consumers.
 
-Effectively integrate renewable energy sources into the grid, promoting a sustainable energy future.
+* Effectively integrate renewable energy sources into the grid, promoting a sustainable energy future.
 
 By harnessing the power of machine learning, this project will equip stakeholders with the knowledge and tools to navigate the evolving energy landscape and ensure energy security for all.
 
