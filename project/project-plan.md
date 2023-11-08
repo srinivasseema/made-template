@@ -1,9 +1,9 @@
 
 # Project Plan
 
-## Correlation Between Energy and Weather
+## Weathering the Storm: Forecasting Energy Consumption and Pricing Trends Amidst Changing Climate Conditions. 
 <!-- Give your project a short title. -->
-Weathering the Storm: Forecasting Energy Consumption and Pricing Trends Amidst Changing Climate Conditions.
+Correlation Between Energy and Weather to anticipate energy demand surges and dips.
 
 ## Main Question
 
@@ -37,7 +37,6 @@ By harnessing the power of machine learning, this project will equip stakeholder
 * Data URL: https://transparency.entsoe.eu/generation/r2/actualGenerationPerProductionType/show?name=&defaultValue=false&viewType=TABLE&areaType=BZN&atch=false&datepicker-day-offset-select-dv-date-from_input=D&dateTime.dateTime=08.11.2023+00:00|CET|DAYTIMERANGE&dateTime.endDateTime=08.11.2023+00:00|CET|DAYTIMERANGE&area.values=CTY|10Y1001A1001A83F!BZN|10Y1001A1001A82H&productionType.values=B01&productionType.values=B02&productionType.values=B03&productionType.values=B04&productionType.values=B05&productionType.values=B06&productionType.values=B07&productionType.values=B08&productionType.values=B09&productionType.values=B10&productionType.values=B11&productionType.values=B12&productionType.values=B13&productionType.values=B14&productionType.values=B20&productionType.values=B15&productionType.values=B16&productionType.values=B17&productionType.values=B18&productionType.values=B19&dateTime.timezone=CET_CEST&dateTime.timezone_input=CET+(UTC+1)+/+CEST+(UTC+2)#
 * Data Type: CSV
 
-Short description of the DataSource.
 This dataset contains yearly electrical consumption, generation data for european countries. Consumption and generation data was retrieved from ENTSOE a public portal for Transmission Service Operator (TSO) data. 
 
 
@@ -46,7 +45,6 @@ This dataset contains yearly electrical consumption, generation data for europea
 * Data URL: https://openweathermap.org/bulk#
 * Data Type: CSV
 
-Short description of the DataSource.
 Current, forecast and historical weather data is available via regulary updated JSON or CSV files. In order to receive this data, you will need to download an archive via provided link. Each archive will contain selected weather data by chosen locations lists.
 
 
@@ -54,5 +52,5 @@ Current, forecast and historical weather data is available via regulary updated 
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. How to download 
-2. ...
+1. Explore Datasources
+2. Analyze data pipeline requirements
