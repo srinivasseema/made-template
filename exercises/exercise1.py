@@ -20,7 +20,7 @@ class AirportData:
             'column_6': 'str',
             'column_7': 'float64',
             'column_8': 'float64',
-            'column_9': 'float64',
+            'column_9': 'int64',
             'column_10': 'float32',
             'column_11': 'str',
             'column_12': 'str',
