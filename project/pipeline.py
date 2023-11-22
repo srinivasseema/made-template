@@ -1,5 +1,7 @@
 import kaggle
 import os
+import pandas as pd 
+import logging
 
 
 #About Dataset
@@ -17,11 +19,18 @@ import os
 
 
 class EnergyDataPipeline:
+
+    # Define a class-level logger object
+    logger = logging.getLogger(__name__)
+
+
+    def __init__(self):
+        # Configure the logger
+        self.logger.setLevel(logging.INFO)
     
-    @staticmethod
-    def executePipeline():
-        
+    def downloadfiles(self):
         # Authenticate with the Kaggle API
+        self.logger.info('Authenticating with Kaggle API')
         kaggle.api.authenticate()
 
         # Specify the dataset to download
@@ -34,7 +43,35 @@ class EnergyDataPipeline:
             os.makedirs(data_folder)
 
         # Download the dataset
+        self.logger.info("Downloading dataset %s", dataset_name)
         kaggle.api.dataset_download_files(dataset_name, path=data_folder, unzip=True)
 
+ 
+    
+    def readfiles(self):
+
+        # Read energy data
+        energyDataPath = "./data/energy_dataset.csv"
+        self.logger.info("Reading dataset %s", energyDataPath)
+        energyDF = pd.read_csv(f"{energyDataPath}")
+
+        # Preview of Energy data
+        energyDF.head(5)
+
+        # Read Weather data
+        weatherDataPath = "./data/weather_features.csv"
+        self.logger.info("Reading dataset ", weatherDataPath)
+        weatherDF = pd.read_csv(f"{weatherDataPath}")
+
+        # Preview of Weather data
+        weatherDF.head(5)
+
+    def executePipeline(self):
+        #make pipeline sections
+        self.downloadfiles()
+        self.readfiles()
+
+    
 if __name__ == "__main__":
-    EnergyDataPipeline.executePipeline()
+     pipeline = EnergyDataPipeline()
+     pipeline.executePipeline()
