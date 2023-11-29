@@ -76,7 +76,6 @@ def create_trainstops_table(connection):
     cursor = connection.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS trainstops (
-            Rekordnummer BIGINT PRIMARY KEY,
             EVA_NR BIGINT,
             DS100 TEXT,
             IFOPT TEXT,
