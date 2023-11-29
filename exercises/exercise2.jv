@@ -1,0 +1,110 @@
+pipeline TrainStopsPipeline {
+  // Define the pipeline execution order
+    TrainStopsCSVExtractor -> TrainStopsTextFileInterpreter -> TrainStopsCSVInterpreter  -> TrainStopsTableInterpreter -> SQLiteLoader;
+    //-> ConvertCommaToDecimal 
+    //-> ValidateData
+   //  -> SQLiteLoader
+  // Extract data from CSV file using semicolon separator
+  block TrainStopsCSVExtractor oftype HttpExtractor {
+    url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV";
+  }
+
+  block TrainStopsTextFileInterpreter oftype TextFileInterpreter { }
+
+
+  block TrainStopsCSVInterpreter oftype CSVInterpreter {
+    delimiter: ";";
+ }
+
+
+//Status column is ignored 
+  block TrainStopsTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [ 
+            "EVA_NR" oftype integer,
+            "DS100" oftype ValidTextType,
+            "IFOPT" oftype IFOPTType,
+            "NAME" oftype ValidTextType,
+            "Verkehr" oftype verkehrType,
+            "Laenge" oftype LaengeType,
+            "Breite" oftype BreiteType,
+            "Betreiber_Name" oftype ValidTextType,
+            "Betreiber_Nr" oftype integer
+        ];
+    }
+
+
+
+ // Load data into SQLite database
+  block SQLiteLoader oftype SQLiteLoader {
+    table: "trainstops";
+    file: "./trainstops.sqlite";
+  }
+
+  valuetype verkehrType oftype text {
+    constraints: [
+        valid_verkehr, notEmpty
+    ];
+  }
+
+  valuetype ValidTextType oftype text {
+    constraints: [
+        notEmpty
+    ];
+  }
+
+
+  valuetype LaengeType oftype decimal {
+    constraints: [
+        validLaenge
+        
+    ];
+}
+
+
+  valuetype BreiteType oftype decimal {
+    constraints: [
+        validBreite
+        
+    ];
+}
+
+
+  valuetype IFOPTType oftype text {
+    constraints: [
+        validIFOPT,
+        notEmpty
+    ];
+}
+
+
+
+  //Constriants
+
+  constraint validIFOPT oftype RegexConstraint {
+    regex: /^[A-Za-z]{2}:\d+:\d+(:\d+)?$/;
+  }
+
+  constraint notEmpty oftype RegexConstraint {
+    regex: /^.+$/;
+  }
+
+
+  constraint valid_verkehr oftype AllowlistConstraint {
+   allowlist: ["FV", "RV", "nur DPN"];
+  }
+
+//lowerBoundInclusive, upperBoundInclusive are true by default.
+  constraint validLaenge oftype RangeConstraint {
+   lowerBound: -90;
+   upperBound: 90;
+   }
+
+//lowerBoundInclusive, upperBoundInclusive are true by default.
+  constraint validBreite oftype RangeConstraint {
+   lowerBound: -90;
+   upperBound: 90;
+   }
+
+
+}
