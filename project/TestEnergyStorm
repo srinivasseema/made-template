@@ -11,11 +11,12 @@ class TestEnergyDataPipeline(unittest.TestCase):
         try:
             weatherDF = self.pipeline.readWeatherData.fn()
             self.pipeline.data_exploration.fn(weatherDF)
-            self.pipeline.pipeline.handle_null_values.fn("weather", weatherDF)
-            flow.run()
+            self.pipeline.null_values.fn("weather", weatherDF)
         except Exception as e:
             logging.error(f"Error writing data to SQL: {e}")
             self.fail(f"Flow raised an exception: {e}")
+
+            
 
 if __name__ == "__main__":
     unittest.main()
