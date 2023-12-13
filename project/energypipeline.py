@@ -3,7 +3,7 @@ import os
 import pandas as pd 
 import logging
 from sqlalchemy import create_engine
-from prefect import flow, task
+from prefect import flow, task, get_run_logger
 
 class EnergyDataPipeline:
     
@@ -89,6 +89,7 @@ class EnergyDataPipeline:
 
     @task
     def findCorrelations(df):
+        logger = get_run_logger()
         # DF.corr to show correlation of values
         # Assuming df is your DataFrame and 'date' is the column with the date strings
         # Convert 'time' column to datetime
@@ -96,7 +97,7 @@ class EnergyDataPipeline:
         # Convert 'time' column to Unix timestamp
         df['time'] = df['time'].apply(lambda x: x.timestamp())
         correlations = df.corr(method='pearson')
-        print(correlations['price actual'].sort_values(ascending=False).to_string())
+        #logger.info(correlations['price actual'].sort_values(ascending=False).to_string())
         # Heatmap of correlation
         zero_val_cols = ['generation marine',
                  'generation geothermal',
@@ -117,7 +118,7 @@ class EnergyDataPipeline:
 
     @task
     def writeDataToSQL(tableName, df):
-        logger = logging.getLogger(__name__)
+        logger = get_run_logger()
         logger.info("Writing dataset %s to SQL", tableName)
         engine = create_engine('sqlite:///energystorm.sqlite')
         df.to_sql(tableName, engine, if_exists='replace',index=False)
