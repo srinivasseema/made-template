@@ -1,0 +1,21 @@
+import unittest
+from prefect import flow
+from pipeline import EnergyDataPipeline
+import logging
+
+class TestEnergyDataPipeline(unittest.TestCase):
+    def setUp(self):
+        self.pipeline = EnergyDataPipeline()
+    
+    def test_flow_runs_without_errors(self):
+        try:
+            weatherDF = self.pipeline.readWeatherData.fn()
+            self.pipeline.data_exploration.fn(weatherDF)
+            self.pipeline.pipeline.handle_null_values.fn("weather", weatherDF)
+            flow.run()
+        except Exception as e:
+            logging.error(f"Error writing data to SQL: {e}")
+            self.fail(f"Flow raised an exception: {e}")
+
+if __name__ == "__main__":
+    unittest.main()
