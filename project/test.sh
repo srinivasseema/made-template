@@ -1,2 +1,2 @@
 pip install -r requirements.txt
-python3 tests.py
+python3 tests.py1
