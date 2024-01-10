@@ -6,25 +6,30 @@ from prefect import flow, task
 def energyDataFlow():
     pipeline = EnergyDataPipeline()
     #make pipeline sections
-    pipeline.downloadfiles()
+    #pipeline.downloadfiles()
     energyDF = pipeline.readEnergyData()
     pipeline.data_exploration(energyDF)
     pipeline.null_values("energy", energyDF)
     correlations = pipeline.findCorrelations(energyDF)
-    #pipeline.plotHeatmap(correlations)
+    wrangledData = pipeline.wrangleData(energyDF)
+    print(wrangledData.head(5))
+    pipeline.pricePerTotalLoad(wrangledData)
+    pipeline.splitDataAndBaseline(wrangledData)
     pipeline.writeDataToSQL("energy", energyDF)
 
 @flow
 def weatherDataFlow():
     pipeline = EnergyDataPipeline()
     #make pipeline sections
-    pipeline.downloadfiles()
+    #pipeline.downloadfiles()
     weatherDF = pipeline.readWeatherData()
     pipeline.data_exploration(weatherDF)
     #pipeline.null_values("weather", weatherDF)
     #correlations = pipeline.findCorrelations(weatherDF)
     #pipeline.plotHeatmap(correlations)
     pipeline.writeDataToSQL("weather", weatherDF)
+    #Found very high correlation between some columns.
+    #All data seems to be numeric.
 
 @flow
 def executePipeline():
