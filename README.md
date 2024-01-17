@@ -1,42 +1,49 @@
-# Methods of Advanced Data Engineering Template Project
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+# Project Plan
+
+## Weathering the Storm: Forecasting Energy Consumption and Pricing Trends Amidst Changing Climate Conditions. 
+<!-- Give your project a short title. -->
+Correlation Between Energy and Weather to anticipate energy demand surges and dips.
+
+## Main Question
+
+<!-- Think about one main question you want to answer based on the data. -->
+1. Identify weather patterns and climate factors that significantly impact energy consumption to anticipate energy demand surges and dips.
+2. Insights into the relationship between energy consumption, pricing, and climate patterns.
+
+## Description
+
+<!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
+
+In a rapidly changing climate, accurate energy demand and pricing forecasts are crucial for ensuring grid stability and sustainable resource management. This project aims to analyse energy consumption and pricing trends.
+
+The model will analyze historical energy consumption data, weather patterns, and climate projections to identify key relationships driving energy demand and pricing dynamics. This will enable utilities to:
+
+* Proactively prepare for demand fluctuations caused by extreme weather events.
+
+* Optimize energy pricing strategies to ensure financial sustainability while maintaining affordability for consumers.
+
+Further, By harnessing the power of machine learning, this project will equip stakeholders with the knowledge and tools to navigate the evolving energy landscape and ensure energy security for all.
 
 
-## Project Work
-Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
+## Datasources
 
-### Exporting a Jupyter Notebook
-Jupyter Notebooks can be exported using `nbconvert` (`pip install nbconvert`). For example, to export the example notebook to html: `jupyter nbconvert --to html examples/final-report-example.ipynb --embed-images --output final-report.html`
+<!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
+
+### Datasource1: Energy Data
+* Metadata URL: https://transparency.entsoe.eu/
+* Data URL: https://transparency.entsoe.eu/generation/r2/actualGenerationPerProductionType/show?name=&defaultValue=false&viewType=TABLE&areaType=BZN&atch=false&datepicker-day-offset-select-dv-date-from_input=D&dateTime.dateTime=08.11.2023+00:00|CET|DAYTIMERANGE&dateTime.endDateTime=08.11.2023+00:00|CET|DAYTIMERANGE&area.values=CTY|10Y1001A1001A83F!BZN|10Y1001A1001A82H&productionType.values=B01&productionType.values=B02&productionType.values=B03&productionType.values=B04&productionType.values=B05&productionType.values=B06&productionType.values=B07&productionType.values=B08&productionType.values=B09&productionType.values=B10&productionType.values=B11&productionType.values=B12&productionType.values=B13&productionType.values=B14&productionType.values=B20&productionType.values=B15&productionType.values=B16&productionType.values=B17&productionType.values=B18&productionType.values=B19&dateTime.timezone=CET_CEST&dateTime.timezone_input=CET+(UTC+1)+/+CEST+(UTC+2)#
+* Data Type: CSV
+
+This dataset contains yearly electrical consumption, generation data for european countries. Consumption and generation data was retrieved from ENTSOE a public portal for Transmission Service Operator (TSO) data. 
+
+## Work Packages
+
+<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
+
+1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
+2. Analyze data pipeline requirements
 
 
-## Exercises
-During the semester you will need to complete exercises, sometimes using [Python](https://www.python.org/), sometimes using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.<jv or py>`.
-
-In regular intervalls, exercises will be given as homework to complete during the semester. We will divide you into two groups, one completing an exercise in Jayvee, the other in Python, switching each exercise. Details and deadlines will be discussed in the lecture, also see the [course schedule](https://made.uni1.de/). At the end of the semester, you will therefore have the following files in your repository:
-
-1. `./exercises/exercise1.jv` or `./exercises/exercise1.py`
-2. `./exercises/exercise2.jv` or `./exercises/exercise2.py`
-3. `./exercises/exercise3.jv` or `./exercises/exercise3.py`
-4. `./exercises/exercise4.jv` or `./exercises/exercise4.py`
-5. `./exercises/exercise5.jv` or `./exercises/exercise5.py`
-
-### Exercise Feedback
-We provide automated exercise feedback using a GitHub action (that is defined in `.github/workflows/exercise-feedback.yml`). 
-
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
-
-The exercise feedback is executed whenever you make a change in files in the `exercise` folder and push your local changes to the repository on GitHub. To see the feedback, open the latest GitHub Action run, open the `exercise-feedback` job and `Exercise Feedback` step. You should see command line output that contains output like this:
-
-```sh
-Found exercises/exercise1.jv, executing model...
-Found output file airports.sqlite, grading...
-Grading Exercise 1
-	Overall points 17 of 17
-	---
-	By category:
-		Shape: 4 of 4
-		Types: 13 of 13
-```
+Slides Link 
+Video Link
