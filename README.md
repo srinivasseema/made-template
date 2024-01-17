@@ -5,7 +5,7 @@
 <!-- Give your project a short title. -->
 Correlation Between Energy and Weather to anticipate energy demand surges and dips.
 
-![alt text](http://url/to/img.png)
+![Banner Image](https://github.com/srinivasseema/made-template/blob/main/project/banner.png)
 
 ## Description
 
