@@ -43,3 +43,7 @@ This dataset contains yearly electrical consumption, generation data for europea
 
 1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
 2. Analyze data pipeline requirements
+
+
+Slides Link 
+Video Link
