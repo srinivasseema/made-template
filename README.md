@@ -33,12 +33,6 @@ Further, By harnessing the power of machine learning, this project will equip st
 
 This dataset contains yearly electrical consumption, generation data for european countries. Consumption and generation data was retrieved from ENTSOE a public portal for Transmission Service Operator (TSO) data. 
 
-## Work Packages
-
-<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
-
-1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
-2. Analyze data pipeline requirements
 
 ## Dataengineering framework 
 
@@ -80,3 +74,9 @@ http://127.0.0.1:4200/deployments
 [Project Video](https://github.com/srinivasseema/made-template/blob/main/project/project-video.mp4)
 [Report](https://github.com/srinivasseema/made-template/blob/main/project/report.ipynb)
 
+## Work Packages
+
+<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
+
+1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
+2. Analyze data pipeline requirements
