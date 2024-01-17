@@ -40,8 +40,43 @@ This dataset contains yearly electrical consumption, generation data for europea
 1. Explore Datasources [https://github.com/srinivasseema/made-template/issues/1]
 2. Analyze data pipeline requirements
 
+## Dataengineering framework 
+
+### Prefect Dashboard
+![Prefect Dashboard](https://github.com/srinivasseema/made-template/blob/main/project/imgs/prefect_dashboard.png)
+
+### Prefect Deployment Flow:
+![Prefect Deployment Flow](https://github.com/srinivasseema/made-template/blob/main/project/imgs/prefect_flow.png)
+
+### Prefect Flow Runs:
+![Prefect Deployment Flow](https://github.com/srinivasseema/made-template/blob/main/project/imgs/prefect_flowruns.png)
+
+### Prefect Schedule:
+![Prefect Schedule](https://github.com/srinivasseema/made-template/blob/main/project/imgs/prefect_schedule.png)
+
+## CI/CD
+* Prefect framework handling the automated deployment, schedule of the flows
+* Has integration with Jupyter notebook to run notebook as task
+
+### Prefect Server Commands
+#### To start server locally:
+* prefect server start
+
+#### To create deployment:
+By invoking the flow with serve method and specifying name of the flow:
+
+executePipeline.serve(name="energy-data-flow")
+
+* We can run the deployment of the pipeline with below command:
+prefect deployment run 'executePipeline/my-first-deployment'
+
+#### To access Prefect UI:
+http://127.0.0.1:4200/deployments
+
+
 ## Additional Documentation
 
 [Slides](https://github.com/srinivasseema/made-template/blob/main/project/slides.pdf)
 [Project Video](https://github.com/srinivasseema/made-template/blob/main/project/project-video.mp4)
 [Report](https://github.com/srinivasseema/made-template/blob/main/project/report.ipynb)
+
