@@ -15,7 +15,7 @@ Correlation Between Energy and Weather to anticipate energy demand surges and di
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
 
-In a rapidly changing climate, accurate energy demand and pricing forecasts are crucial for ensuring grid stability and sustainable resource management. This project aims to develop a sophisticated machine learning model that predicts energy consumption and pricing trends.
+In a rapidly changing climate, accurate energy demand and pricing forecasts are crucial for ensuring grid stability and sustainable resource management. This project aims to analyse energy consumption and pricing trends.
 
 The model will analyze historical energy consumption data, weather patterns, and climate projections to identify key relationships driving energy demand and pricing dynamics. This will enable utilities to:
 
@@ -23,9 +23,7 @@ The model will analyze historical energy consumption data, weather patterns, and
 
 * Optimize energy pricing strategies to ensure financial sustainability while maintaining affordability for consumers.
 
-* Effectively integrate renewable energy sources into the grid, promoting a sustainable energy future.
-
-By harnessing the power of machine learning, this project will equip stakeholders with the knowledge and tools to navigate the evolving energy landscape and ensure energy security for all.
+Further, By harnessing the power of machine learning, this project will equip stakeholders with the knowledge and tools to navigate the evolving energy landscape and ensure energy security for all.
 
 
 ## Datasources
@@ -38,15 +36,6 @@ By harnessing the power of machine learning, this project will equip stakeholder
 * Data Type: CSV
 
 This dataset contains yearly electrical consumption, generation data for european countries. Consumption and generation data was retrieved from ENTSOE a public portal for Transmission Service Operator (TSO) data. 
-
-
-### Datasource1: Weather
-* Metadata URL: https://openweathermap.org/api
-* Data URL: https://openweathermap.org/bulk#
-* Data Type: CSV
-
-Current, forecast and historical weather data is available via regulary updated JSON or CSV files. In order to receive this data, you will need to download an archive via provided link. Each archive will contain selected weather data by chosen locations lists.
-
 
 ## Work Packages
 

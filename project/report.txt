@@ -4,6 +4,7 @@
 
 Rapidly changing climate demands accurate energy demand and pricing forecasts for grid stability and sustainable resource management.
 This project aims to develop a sophisticated machine learning model to predict energy consumption and pricing trends based on weather patterns and climate factors.
+
 ## Methods
 
 Data Sources:

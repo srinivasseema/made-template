@@ -7,6 +7,9 @@ from sqlalchemy import create_engine
 from prefect import flow, task, get_run_logger
 import seaborn as sns
 import matplotlib.pyplot as plt
+import plotly.express as px
+from sklearn.model_selection import train_test_split, cross_val_score, validation_curve, GridSearchCV
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 class EnergyDataPipeline:
     
@@ -78,7 +81,6 @@ class EnergyDataPipeline:
         import seaborn as sns
         import matplotlib.pyplot as plt
         
-
         # .corr heatmap of df to visualize correlation & show plot
         sns.heatmap(round(df.corr(),1),annot=True,cmap='Blues',linewidth=0.9)
         plt.show()
@@ -92,8 +94,8 @@ class EnergyDataPipeline:
 
     @task
     def wrangleData(df):
-    # Read in the data, parse dates, and set the index
-    # Assuming df is your DataFrame and 'time' is the column with dates
+        # Read in the data, parse dates, and set the index
+        # Assuming df is your DataFrame and 'time' is the column with dates
         #df['time'] = pd.to_datetime(df['time'])
         #df.set_index('time', inplace=True)
 
@@ -102,13 +104,13 @@ class EnergyDataPipeline:
         df['time'] = df['time'].apply(lambda x: x.timestamp())
         df.set_index('time', inplace=True)
  
-    # Rename columns by replacing all - or blank space with _
+        # Rename columns by replacing all - or blank space with _
         df.columns = df.columns.str.replace(' ','_').str.replace('-','_')
 
         # Make the index DT
         df.index = pd.to_datetime(df.index, utc=True)    
 
-    # Drop all columns with data leakage, or 90% + null
+        # Drop all columns with data leakage, or 90% + null
         df.drop(columns=['price_day_ahead',
                      'generation_marine',
                      'total_load_forecast',
@@ -122,19 +124,19 @@ class EnergyDataPipeline:
                      'generation_fossil_coal_derived_gas',
                      'generation_hydro_pumped_storage_aggregated'],inplace=True)
     
-    # Drop Outlier row 2014 for plotting
+        # Drop Outlier row 2014 for plotting
         #df = df.drop(pd.Timestamp('2014-12-31 23:00:00+00:00')) 
     
-    # Sort index
+        # Sort index
         df = df.sort_index()
     
-    # Set conditional satements for filtering times of month to season value
+        # Set conditional satements for filtering times of month to season value
         condition_winter = (df.index.month>=1)&(df.index.month<=3)
         condtion_spring = (df.index.month>=4)&(df.index.month<=6)
         condition_summer = (df.index.month>=7)&(df.index.month<=9)
         condition_automn = (df.index.month>=10)@(df.index.month<=12)
     
-    # Create column in dataframe that inputs the season based on the conditions created above
+        # Create column in dataframe that inputs the season based on the conditions created above
         df['season'] = np.where(condition_winter,'winter',
                             np.where(condtion_spring,'spring',
                                      np.where(condition_summer,'summer',
@@ -143,7 +145,6 @@ class EnergyDataPipeline:
 
     @task
     def pricePerTotalLoad(df):
-        import plotly.express as px
         # Plot price actual vs total load
         # Figure showing Price per total load
         fig = px.scatter(df,x='total_load_actual',
@@ -163,8 +164,6 @@ class EnergyDataPipeline:
     @task
     def splitDataAndBaseline(df):
         # Create Target variable
-        from sklearn.model_selection import train_test_split, cross_val_score, validation_curve, GridSearchCV
-        from sklearn.metrics import mean_absolute_error, mean_squared_error
         target='price_actual'
 
         # Split data into feature matrix and target vector
@@ -185,11 +184,10 @@ class EnergyDataPipeline:
         print('Baseline RMSE:',baseline_rmse)
 
     @task
-    def null_values(tableName, df):
+    def null_values_check(df):
         #Null % check amongst columns
         dfWithNull = round((df.isnull().sum()/len(df)*100),2)
-        print("null values of "+tableName)
-        print(dfWithNull.sort_values(ascending=False))
+        print(dfWithNull.sort_values(ascending=False).head(5))
         return dfWithNull
 
     @task
