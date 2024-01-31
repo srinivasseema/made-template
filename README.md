@@ -71,7 +71,7 @@ http://127.0.0.1:4200/deployments
 ## Additional Documentation
 
 [Slides](https://github.com/srinivasseema/made-template/blob/main/project/slides.pdf)
-[Project Video](https://github.com/srinivasseema/made-template/blob/main/project/project-video.mp4)
+[Project Video](https://drive.google.com/file/d/10zUhOp0nAC6yLg8gTCRopy7_z46NGHwN/view?usp=sharing)
 [Report](https://github.com/srinivasseema/made-template/blob/main/project/report.ipynb)
 
 ## Work Packages
